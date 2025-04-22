@@ -67,7 +67,7 @@ def run_reconstruction(
     verbose: bool = False,
     options: Optional[Dict[str, Any]] = None,
 ) -> pycolmap.Reconstruction:
-    models_path = sfm_dir / "models"
+    models_path = sfm_dir / "sparse"
     models_path.mkdir(exist_ok=True, parents=True)
     logger.info("Running 3D reconstruction...")
     if options is None:
@@ -96,10 +96,10 @@ def run_reconstruction(
         f"Largest model is #{largest_index} " f"with {largest_num_images} images."
     )
 
-    for filename in ["images.bin", "cameras.bin", "points3D.bin"]:
+    '''for filename in ["images.bin", "cameras.bin", "points3D.bin"]:
         if (sfm_dir / filename).exists():
             (sfm_dir / filename).unlink()
-        shutil.move(str(models_path / str(largest_index) / filename), str(sfm_dir))
+        shutil.move(str(models_path / str(largest_index) / filename), str(sfm_dir))'''
     return reconstructions[largest_index]
 
 
