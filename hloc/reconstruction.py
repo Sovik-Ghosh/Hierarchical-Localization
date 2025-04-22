@@ -43,10 +43,10 @@ def import_images(
         raise IOError(f"No images found in {image_dir}.")
     with pycolmap.ostream():
         pycolmap.import_images(
-            database_path,
-            image_dir,
+            str(database_path),
+            str(image_dir),
             camera_mode,
-            image_list=image_list or [],
+            image_names=image_list or [],
             options=options,
         )
 
